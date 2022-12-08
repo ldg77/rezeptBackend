@@ -11,6 +11,7 @@ const getAllRecipes = async (req, res) => {
 const getByIdRecipe = async (req, res) => {
   try {
     const recipe = await Recipe.findById(req.params.id).populate("comments");
+    console.log(recipe);
     res.status(201).json(recipe);
   } catch (error) {
     console.log(error);
