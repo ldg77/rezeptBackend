@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import Comment from "./CommentModel.js";
 const recipeModel = new mongoose.Schema({
   img: String,
   title: { type: String, required: true },
@@ -13,8 +12,8 @@ const recipeModel = new mongoose.Schema({
   },
   comments: [
     {
-      name: String,
-      text: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment",
     },
   ],
 });
