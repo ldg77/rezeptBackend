@@ -3,17 +3,17 @@ import Comment from "../models/CommentModel.js";
 const saveComment = async (req, res) => {
   try {
     const comment = await Comment.create(req.body);
-    const recipe = await Recipe.findById(req.params.id);
-    const updatedRecipe = await Recipe.findByIdAndUpdate(
-      recipe.id,
-      { comments: [...recipe.comments, comment.id] },
+    const recipe = await Recipe.findByIdAndUpdate(
+      req.params.id,
+      { $push: { comments: comment._id } },
       { new: true }
     );
-    console.log(updatedRecipe);
-    res.status(201).json(updatedRecipe);
+    res.status(201).json(recipe);
   } catch (error) {
     console.log(error);
   }
 };
+
+export { saveComment };
 
 export { saveComment };
