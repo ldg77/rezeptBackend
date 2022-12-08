@@ -5,8 +5,8 @@ const saveComment = async (req, res) => {
     const comment = await Comment.create(req.body);
     const recipe = await Recipe.findById(req.params.id);
     const updatedRecipe = await Recipe.findByIdAndUpdate(
-      recipe._id,
-      { comments: [...recipe.comments, comment._id] },
+      recipe.id,
+      { comments: [...recipe.comments, comment.id] },
       { new: true }
     );
     console.log(updatedRecipe);
