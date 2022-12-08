@@ -15,5 +15,3 @@ const saveComment = async (req, res) => {
 };
 
 export { saveComment };
-
-export { saveComment };
